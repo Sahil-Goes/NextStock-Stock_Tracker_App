@@ -7,7 +7,6 @@ import SelectField from '@/components/forms/SelectField';
 import { Button } from '@/components/ui/button';
 import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from '@/lib/constants';
 import { useRouter } from 'next/navigation';
-import React from 'react'
 import { useForm } from 'react-hook-form';
 
 const SignUp = () => {
@@ -60,7 +59,13 @@ const SignUp = () => {
                     placeholder="john@example.com"
                     register={register}
                     error={errors.email}
-                    validation={{ required: 'Email is required', pattern: /^\w+@\w+\.\w+$/, message: 'Valid email address is required' }}
+                    validation={{ 
+                        required: 'Email is required', 
+                        pattern: { 
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, 
+                            message: 'Valid email address is required' 
+                        } 
+                    }}
                 />
 
                 <InputField

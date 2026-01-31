@@ -37,30 +37,42 @@ const SignIn = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 {/* Form INPUTS*/}
 
-                <InputField
+                 <InputField
                     name="email"
                     label="Email"
                     placeholder="john@example.com"
                     register={register}
                     error={errors.email}
-                    validation={{ required: 'Email is required', pattern: /^\w+@\w+\.\w+$/, message: 'Valid email address is required' }}
-                />
+                    validation={{ 
+                       required: 'Email is required', 
+                        pattern: { 
+                           value: /^\w+@\w+\.\w+$/, 
+                            message: 'Valid email address is required' 
+                        } 
+                    }}
+                 />
 
-                <InputField
+                 <InputField
                     name="password"
                     label="Password"
                     placeholder="Enter your password"
                     type="password"
                     register={register}
                     error={errors.password}
-                    validation={{ required: 'Password is required', minLength: 8 }}
-                />
+                    validation={{ 
+                        required: 'Password is required', 
+                        minLength: { 
+                            value: 8, 
+                            message: 'Password must be at least 8 characters' 
+                        } 
+                    }}
+                 />
 
                 <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
                     {isSubmitting ? 'Signing into your Account...' : 'Sign In'}
                 </Button>
 
-                <FooterLink text="Dont have an account?" linkText="Sign Up" href="/sign-up" />
+                <FooterLink text="Don't have an account?" linkText="Sign Up" href="/sign-up" />
             </form>
         </>
     )
